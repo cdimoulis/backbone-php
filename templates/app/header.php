@@ -6,12 +6,15 @@ and views will be used.
 
 // Get page info
 $route = trim($_SERVER['REQUEST_URI'], '//');
-$route_array = explode('/', $route);
-$page = array_pop($route_array);
-$page_name = explode('.php',$page)[0];
-if (empty($page_name)) {
-  $page_name = 'index';
+// If route does not contain .php then add /index
+// Otherwise strip out the php
+if (strpos($route, ".php") == false) {
+  $page_name = $route."/index";
 }
+else {
+  $page_name = explode('.php',$route)[0];
+}
+
 // Build routes for header imports
 $features = dirname(__FILE__).'/../../app/js/lib/features';
 $models = dirname(__FILE__).'/../../app/js/lib/models';
@@ -73,6 +76,7 @@ getFiles($view_stylesheet_files, $view_stylesheets, "", ".css");
 
 // Output the static header files for a page
 $scripts = "
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='' crossorigin='anonymous'></script>
   <script src='http://underscorejs.org/underscore-min.js'></script>
   <script src='http://backbonejs.org/backbone-min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
@@ -87,7 +91,8 @@ foreach($feature_files as $file) {
 }
 
 // APP and CSS static files
-$scripts = $scripts."<script src='/app/js/application.js'></script>
+$scripts = $scripts."
+  <script src='/app/js/application.js'></script>
   <script src='/app/js/init.js'></script>
   <link href='/app/stylesheets/app.css' rel='stylesheet' type='text/css' />\n";
 

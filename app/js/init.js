@@ -6,7 +6,7 @@ this.App = new Application({
 		//***************************
 
 		// Spinner
-		this.Spinner = new Spinner({on: true});
+		this.Spinner = new Spinner();
 		// Snackbar
 		this.Snackbar = new Snackbar();
 		//***************************
@@ -26,10 +26,6 @@ this.App = new Application({
   },
 
 	_prefetch: function() {
-		this.cache = {};
-
-		// Verses for spinner
-		this.cache.loading_verses = new App.Collections.LoadingVerses();
-		this.cache.loading_verses.fetch();
+  
 	},
 });
