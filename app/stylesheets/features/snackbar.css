@@ -1,0 +1,38 @@
+#snackbar-wrapper {
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    bottom: 0px;
+		display: block;
+}
+
+#snackbar-wrapper .snackbar {
+	opacity: 0;
+	width: 100%;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	font-size: 17px;
+	padding: 16px;
+}
+
+#snackbar-wrapper .snackbar-close {
+	width: 12%;
+	cursor: pointer;
+	display: block;
+	top: .1em;
+	float: right;
+	margin-right: 3%;
+}
+#snackbar-wrapper .snackbar-text {
+	width: 85%;
+	display: inline-block;
+}
+
+#snackbar-wrapper .success {
+	background-color: #228822;
+}
+
+#snackbar-wrapper .error {
+	background-color: #bb2222;
+}

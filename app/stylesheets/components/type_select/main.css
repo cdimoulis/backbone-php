@@ -1,0 +1,20 @@
+.type_select {
+  position: relative;
+  display: inline-block;
+}
+
+.type_select div.list {
+	display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 999;
+}
+
+.type_select #filter:focus + div.list {
+	display: block;
+}
+.type_select:hover div.list {
+	display: block;
+}

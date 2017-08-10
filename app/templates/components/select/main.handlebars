@@ -1,0 +1,16 @@
+{{#if display.has_selected}}
+<option value="" disabled>
+{{else}}
+<option value="" disabled selected>
+{{/if}}
+	{{display.placeholder}}
+</option>
+{{#each this.options}}
+{{#if selected}}
+<option value="{{value}}" selected>
+{{else}}
+<option value="{{value}}">
+{{/if}}
+	{{text}}
+</option>
+{{/each}}
