@@ -12,6 +12,7 @@ contain index in the name
 ***********/
 
 App.Page.extend({
+  // See above comments for naming convention
 	name: "example",
 
   // Functions to run when page is created

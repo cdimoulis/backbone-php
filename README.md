@@ -25,9 +25,9 @@ Any data you wish to be passed to the initial js page view please add to the `Ap
 Lastly treat the `<body>` as a template to attach additional views to. In the case of our example there are 2 `<div>` elements that will eventually contain child views of the page.
 
 ## Page View
-Refer to '/app/js/pages/example.js'
+Refer to `/app/js/pages/example.js`
 
-In the '/app/js/pages` folder add a file to represent the page. The name attribute of the page should match the route of the php page. The page will be attached to the body element automatically if the page name
+In the `/app/js/pages` folder add a file to represent the page. The name attribute of the page should match the route of the php page. The page will be attached to the body element automatically if the page name
 matches the php file route and name (no initial '/' and no .php).  
 For example using the format {php file} -> {page view name}:
 * /example.php -> example
@@ -44,25 +44,25 @@ Pages are views, however they are specifically designed to be the view starting 
 
 For views other than pages the `name` attribute is how a child view will be referenced and how the handlebars template will chosen.
 
-Thus the name for a view should be in a route format like 'views/example/view_a` as to match the file location of the associated template.
+Thus the name for a view should be in a route format like `views/example/view_a` as to match the file location of the associated template.
 
 Any data passed from the parent view can be accessed using `this.data`. This includes `App.page_data` that is setup in the php file and passed to the page view.
 
-The `init_function` array of a view specify which funtions (and in which order) should be run on view initialization.
+The `init_function` array of a view specify which functions (and in which order) should be run on view initialization.
 
 Child views can be specified in the `children` object. Each child has an object that contains:
 * view: The name (string) of the view used to render the child
-* selector: The selector (string) of the element to attch the view to
+* selector: The selector (string) of the element to attach the view to
 * data: An object of data desired to be passed to child view this can be set in one of the init_functions
 
 ## Components
 See `/app/js/components`.
 
-Components are intented for reusable elements of a page. While any view can be reused the Components folder is to indicate lower level elements like input, buttons, etc.
+Components are intended for reusable elements of a page. While any view can be reused the Components folder is to indicate lower level elements like input, buttons, etc.
 
 Components are simply views. The only requirement is to pass the appropriate keys in the data object to those components.
 
 ## Templates
-See `/app/templates/. Handlebar templates are used.
+See `/app/templates/`. Handlebar templates are used.
 
 As mentioned the handlebar template file location under `/app/templates` should match the name of the corresponding view it is associated with.
