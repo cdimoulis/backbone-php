@@ -66,3 +66,10 @@ Components are simply views. The only requirement is to pass the appropriate key
 See `/app/templates/`. Handlebar templates are used.
 
 As mentioned the handlebar template file location under `/app/templates` should match the name of the corresponding view it is associated with.
+
+## File Locations
+For files under `/app/js/views`, `/app/templates/views`, and `/app/stylesheets/views` there should be a folder for the particular page that holds the views, templates, and stylesheets for that page.
+
+What this means is if the page is `example.php` then all views used for that page should be within the directory `/app/js/views/example` (including any subdirectory). This is similar with templates and stylesheets. This prevents views from being loaded that are NOT necessary for a particular page.
+
+Anything placed in the `/app/js/components`, `/app/templates/components`, and `/app/stylesheets/components` will be included on any page. Thus this is where you should put reusable views.
