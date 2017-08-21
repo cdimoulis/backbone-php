@@ -76,7 +76,7 @@ getFiles($view_stylesheet_files, $view_stylesheets, "", ".css");
 
 // Output the static header files for a page
 $scripts = "
-  <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='' crossorigin='anonymous'></script>
+  <script src='https://code.jquery.com/jquery-3.2.1.min.js' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=' crossorigin='anonymous'></script>
   <script src='http://underscorejs.org/underscore-min.js'></script>
   <script src='http://backbonejs.org/backbone-min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
