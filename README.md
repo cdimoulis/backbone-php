@@ -10,10 +10,9 @@ You must keep the folders:
 in your application. You may remove any files associated with the example.
 
 #### For testing and examples
-For the purposes of testing and learning this repo is a complete working PHP app. Assuming PHP is installed simply run `start.sh` in the root directory.
+For the purposes of testing and learning this repo is a complete working PHP app. Assuming PHP is installed simply run `start.sh` in the root directory. This uses the built in PHP server. This server uses the `/dev.ini` file. Feel free to edit if you wish to use your in ini file. Also this file causes all requests to be initially routed to `/init.php`.
 
-Beginning with `example.php` you can see how to setup a page for use of the app. This includes the use of backbone views, models, controllers.
-
+Beginning with the file `/example.php` you can see how to setup a page for use of the app. This includes the use of backbone views, models, controllers.
 
 ## Page Setup
 Refer to `/example.php`.
