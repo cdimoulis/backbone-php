@@ -1,5 +1,5 @@
 # backbone-php
-Use backbone.js and handlebar templates with PHP.
+Use a backbone.js client architecture and handlebar templates with PHP
 
 #### Requirements
 You must keep the folders:
