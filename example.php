@@ -25,7 +25,7 @@ $data_array_from_db = [
   -->
   <script type="text/javascript">
     App.page_data = {
-		  my_info: new App.Models.Example(<?php echo(DataUtil::buildJSObject($data_array_from_db, true)); ?>),
+      my_info: new App.Models.Example(<?php echo(DataUtil::buildJSObject($data_array_from_db, true)); ?>),
     };
 
   </script>
