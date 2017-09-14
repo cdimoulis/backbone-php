@@ -5,7 +5,6 @@ this.Application = function(options) {
   //***************************
   // IMPORTANT APP SETUP
   //***************************
-  this.Root = '/alf/inventory';
 
   this.Models = {};
   this.Collections = {};

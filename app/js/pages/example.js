@@ -13,12 +13,12 @@ contain index in the name
 
 App.Page.extend({
   // See above comments for naming convention
-	name: "example",
+  name: "example",
 
   // Functions to run when page is created
-	init_functions: [
-		'setup',
-	],
+  init_functions: [
+    'setup',
+  ],
 
   // Child views object
   // Each child has an object that contains:
@@ -29,9 +29,9 @@ App.Page.extend({
   children: {
     first: {view: 'views/example/view_a', selector: '#view_a'},
     second: {view: 'views/example/view_b', selector: '#view_b'},
-	},
+  },
 
-	setup: function() {
+  setup: function() {
 
     // Pass desired data object down to children
     this.children.first.data = {
@@ -42,5 +42,5 @@ App.Page.extend({
       info: this.data.my_info,
     };
 
-	},
+  },
 });
