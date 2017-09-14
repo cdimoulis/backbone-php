@@ -2,9 +2,9 @@ this.Application = function(options) {
 
   var _this = this;
 
-	//***************************
-	// IMPORTANT APP SETUP
-	//***************************
+  //***************************
+  // IMPORTANT APP SETUP
+  //***************************
   this.Root = '/alf/inventory';
 
   this.Models = {};
@@ -18,7 +18,7 @@ this.Application = function(options) {
   this.Page = this.View.extend({
   });
 
-	this.page_data = {};
+  this.page_data = {};
 
   /*****
   * Adjust the extend function of backbone's classes
@@ -35,6 +35,10 @@ this.Application = function(options) {
       return child;
     }
   };
+
+  /**********
+  * BEGIN REGISTERING MODELS, CONTROLLERS, AND VIEWS
+  ***********/
 
   _registerClass(this.Model, this.Models);
   _registerClass(this.Collection, this.Collections);
@@ -69,17 +73,17 @@ this.Application = function(options) {
     _this.main();
   };
 
-	// Start the app on ready
-	$(function() {
-		_this.start();
-	});
-	//***************************
-	// END IMPORTANT APP SETUP
-	//***************************
+  // Start the app on ready
+  $(function() {
+    _this.start();
+  });
+  //***************************
+  // END IMPORTANT APP SETUP
+  //***************************
 
 
 
-	// END OF APP
-	this.initialize();
+  // END OF APP
+  this.initialize();
   return this;
 };
