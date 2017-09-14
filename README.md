@@ -84,13 +84,13 @@ After this you can place specific models in the `/app/js/lib/models` folder and 
 #### Using models and collections
 You will see an example model `/app/js/lib/models/example.model.js` and an example collection `/app/js/lib/collections/examples.collection.js`. These extend the base Model or Collection.
 
-The only requirement for specific models is to specify a name key. In the `example.models.js` file you will see `name: Example`. When you want to create an Example model you would do
+The only requirement for specific models is to specify a name key. In the `example.model.js` file you will see `name: Example`. When you want to create an Example model you would do
 
 ```js
   var examp_model = new App.Models.Example();
 ```
 
-For collections you not only specify a name, but also the model. As you see in `examples.collections.js` the model should be accessed like `model: App.Models.Example`. Now when you want to create an Example colleciton you would do
+For collections you not only specify a name, but also the model. As you see in `examples.collection.js` the model should be accessed like `model: App.Models.Example`. Now when you want to create an Example colleciton you would do
 
 ```js
   var examp_col = new App.Collections.Examples();
