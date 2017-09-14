@@ -4,25 +4,25 @@ Backbone.View = Backbone.View.extend({
     _.bindAll(this, '_processAttributes', '_processTemplate', '_processInitFunctions', '_processChildren', 'appendTo', 'addChild', 'removeChild', 'render');
     options = options || {};
 
-		this._children = {};
+    this._children = {};
 
     if (_.has(options, 'data')) {
       this.data = options.data;
     }
 
-		// Deep clone children, remove existing children reference, add new children reference
-		// This fixes a problem due to the children property being low on the prototype chain
-		// Without this child views on a same view would end up with the same data object.
-		var temp_children = {}
-		$.extend(true, temp_children, this.children);
-		delete this.children;
-		this.children = temp_children;
+    // Deep clone children, remove existing children reference, add new children reference
+    // This fixes a problem due to the children property being low on the prototype chain
+    // Without this child views on a same view would end up with the same data object.
+    var temp_children = {}
+    $.extend(true, temp_children, this.children);
+    delete this.children;
+    this.children = temp_children;
 
     this.parent = options.parent;
 
     this._processAttributes();
     this._processInitFunctions();
-		this._processTemplate();
+    this._processTemplate();
   },
 
   _processAttributes: function() {
@@ -37,13 +37,13 @@ Backbone.View = Backbone.View.extend({
     });
   },
 
-	_processTemplate: function() {
-		var $template = $("[template-name='"+this.name+"']");
-		if ($template.length) {
-			this.template = Handlebars.compile($template.html());
-		}
-		this.render();
-	},
+  _processTemplate: function() {
+    var $template = $("[template-name='"+this.name+"']");
+    if ($template.length) {
+      this.template = Handlebars.compile($template.html());
+    }
+    this.render();
+  },
 
   _processInitFunctions: function() {
     var _this = this;
@@ -73,7 +73,7 @@ Backbone.View = Backbone.View.extend({
       if (!obj.view) {
         throw this.name+' MissingViewError: Child '+name+' needs a view.';
       }
-			_this.addChild(obj.view, obj.selector, obj.data);
+      _this.addChild(obj.view, obj.selector, obj.data);
     });
   },
 
@@ -82,48 +82,48 @@ Backbone.View = Backbone.View.extend({
     return this;
   },
 
-	addChild: function(view_name, selector, data) {
-		var view;
-		if (!_.has(App.Views, view_name)) {
-			throw "MissingViewError: "+view_name+" is not a view";
-		}
+  addChild: function(view_name, selector, data) {
+    var view;
+    if (!_.has(App.Views, view_name)) {
+      throw "MissingViewError: "+view_name+" is not a view";
+    }
 
-		var $selector = this.$el.find(""+selector);
-		if (!!$selector.length) {
-			view = new App.Views[view_name]({
-				el: $selector,
-				data: data,
-				parent: this
-			});
-			this._children[view.cid] = view;
-		}
-		return view;
-	},
+    var $selector = this.$el.find(""+selector);
+    if (!!$selector.length) {
+      view = new App.Views[view_name]({
+        el: $selector,
+        data: data,
+        parent: this
+      });
+      this._children[view.cid] = view;
+    }
+    return view;
+  },
 
-	removeChild: function(view) {
-		if (_.has(this._children, view.cid)) {
-			// view.remove();
-			view.$el.empty();
-			view.stopListening();
-			delete this._children[view.cid];
-			delete view
-		}
-	},
+  removeChild: function(view) {
+    if (_.has(this._children, view.cid)) {
+      // view.remove();
+      view.$el.empty();
+      view.stopListening();
+      delete this._children[view.cid];
+      delete view
+    }
+  },
 
-	removeAllChildren: function() {
-		var _this = this;
-		_.each(this._children, function(view, cid) {
-			_this.removeChild(view);
-		});
-	},
+  removeAllChildren: function() {
+    var _this = this;
+    _.each(this._children, function(view, cid) {
+      _this.removeChild(view);
+    });
+  },
 
-	render: function() {
-		this.removeAllChildren();
+  render: function() {
+    this.removeAllChildren();
 
-		if (!!this.template) {
-			this.$el.html(this.template(this));
-		}
+    if (!!this.template) {
+      this.$el.html(this.template(this));
+    }
     this._processChildren();
-		return this;
-	}
+    return this;
+  }
 })

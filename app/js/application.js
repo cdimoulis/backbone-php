@@ -44,6 +44,8 @@ this.Application = function(options) {
   _registerClass(this.View, this.Views);
 
   // Register the page view
+  // Only one page will be imported. When you App.Page.extend({...}) then
+  // that one page will be registered as App.Page
   page_extend = this.Page.extend;
   this.Page.extend = function() {
     _this.Page = page_extend.apply(this, arguments);
