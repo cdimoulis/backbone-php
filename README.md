@@ -72,3 +72,26 @@ For files under `/app/js/views`, `/app/templates/views`, and `/app/stylesheets/v
 What this means is if the page is `example.php` then all views used for that page should be within the directory `/app/js/views/example` (including any subdirectory). This is similar with templates and stylesheets. This prevents views from being loaded that are NOT necessary for a particular page.
 
 Anything placed in the `/app/js/components`, `/app/templates/components`, and `/app/stylesheets/components` will be included on any page. Thus this is where you should put reusable views.
+
+
+## Models and Collections
+Under `/app/js/lib` you will find `collection.js` and `model.js`. These files are where you can begin to create your App's specific implementation of the base Collection and Model that all other collections and models will inherit from.
+
+View the backbone.js documentation to see what can be done. For instance implementing a general `url()` function for all. There is an example `url()` function commented in the base Model and Collection. Feel free to use it, alter it, or delete it completely.
+
+After this you can place specific models in the `/app/js/lib/models` folder and specific collections in the `/app/js/lib/collections` folder.
+
+#### Using models and collections
+You will see an example model `/app/js/lib/models/example.model.js` and an example collection `/app/js/lib/collections/examples.collection.js`. These extend the base Model or Collection.
+
+The only requirement for specific models is to specify a name key. In the `example.models.js` file you will see `name: Example`. When you want to create an Example model you would do
+
+```js
+  var examp_model = new App.Models.Example();
+```
+
+For collections you not only specify a name, but also the model. As you see in `examples.collections.js` the model should be accessed like `model: App.Models.Example`. Now when you want to create an Example colleciton you would do
+
+```js
+  var examp_col = new App.Collections.Examples();
+```
