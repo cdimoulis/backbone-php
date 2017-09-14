@@ -1,82 +1,31 @@
 Backbone.Collection = Backbone.Collection.extend({
-	_baseURL: "/includes/ajax",
+  // Name is required for specific collections.
+  // See /app/js/lib/collections/examples.collection.js. For example:
+  // name: 'BaseCollection',
 
-  url: function(folder="default", file) {
-		if (!!file) {
-			return this._baseURL+"/"+folder+"/"+file;
-		}
-		else {
-			return this._baseURL+"/"+folder+"/";
-		}
-  },
-
-  toJSON: function() {
-    var name = this['name'].toUnderscore().toLowerCase();
-    var obj = {};
-    var models = this.map( function(model) {
-      var np = model.nestedParams;
-      model.nestedParams = false;
-      m = model.toJSON();
-      model.nestedParams = np;
-      return m;
-    });
-
-    obj[name] = models;
-    return obj;
-  },
-
-	customSave: function(file, options) {
-		options || (options = {});
-		var name = this.name.toUnderscore().toLowerCase();
-		options.url = this.url(name,file);
-
-		this.save(this.attributes, options)
-	},
-
-	_customFetch: function(file, options) {
-		options || (options = {});
-		var name = this.name.toUnderscore().toLowerCase();
-		options.url = this.url(name,file);
-
-		this.fetch(options)
-	},
-
-	// Need to override model fetch so that we can add some GET params
-	// Server needs 1 extra param:
-	// 	table_name: the name of the table (model)
-	fetch: function(options) {
-		options = _.extend({parse: true}, options);
-		options = this._paramBuilder(options);
-    var success = options.success;
-    var collection = this;
-		var name = this.name;
-    options.success = function(resp) {
-      var method = options.reset ? 'reset' : 'set';
-			models = resp[name.toUnderscore().toLowerCase()];
-      collection[method](models, options);
-      if (success) success.call(options.context, collection, resp, options);
-      collection.trigger('sync', collection, resp, options);
-    };
-    wrapError(this, options);
-    return this.sync('read', this, options);
-  },
-
-	_paramBuilder: function(options) {
-		var data = {};
-
-		if (!!this.name) {
-			data.table_name = this.name.toUnderscore().toLowerCase();
-		}
-
-		options.data = _.extend(data, options.data);
-		return options;
-	},
+  /*
+    As an example the url function below will use build a url based on:
+      parent: set a model to have a parent (model.parent = other_model)
+      urlRoot: Set this key to specify a unique url route
+        Without urlRoot the url will be built with the name key of the model
+  */
+  // url: function() {
+  //   var url = '';
+  //
+  //   // If there is a parent place that its url in the string first
+  //   if (!!this.parent){
+  //     url += this.parent.url();
+  //   }
+  //
+  //   // If there is a urlRoot use it. Otherwise use the model name
+  //   if (!!this.urlRoot){
+  //     url += this.urlRoot;
+  //   }
+  //   else{
+  //     url += '/'+this.name.toUnderscore();
+  //   }
+  //
+  //   return url;
+  // },
+  
 });
-
-var wrapError = function(collection, options) {
-	var error = options.error;
-	options.error = function(resp) {
-		if (error) error.call(options.context, collection, resp, options);
-		collection.trigger('error', collection, resp, options);
-	};
-};
