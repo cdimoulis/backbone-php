@@ -1,16 +1,16 @@
 App.View.extend({
-	name: "views/example/view_b",
+  name: "views/example/view_b",
 
-	init_functions: [
-		'setup',
-	],
+  init_functions: [
+    'setup',
+  ],
 
   children: {
     name_input: {view: 'components/input/main', selector: '#name'},
     save_button: {view: 'components/button/main', selector: '#done'},
-	},
+  },
 
-	setup: function() {
+  setup: function() {
     _.bindAll(this,'_save');
 
     // this.data.info was setup in pages/example.js
@@ -27,7 +27,7 @@ App.View.extend({
       event_handler: this._save,
     };
 
-	},
+  },
 
   _save: function() {
     this.data.info.set(this.local.person.attributes);
